@@ -1,0 +1,63 @@
+<nav id="navbar">
+    <div class="navbar">
+      <ul class="menu">
+        <li class="menu-item" [ngClass]="{'active': activeMenuItem === 'Home'}">
+          <a href="#" (click)="setActiveMenuItem('Home')">Home</a>
+        </li>
+        <li class="menu-item" [ngClass]="{'active': activeMenuItem === 'About Us'}">
+          <a href="#" (click)="setActiveMenuItem('About Us')">About Us</a>
+        </li>
+        <li class="menu-item has-submenu" (click)="toggleSubmenu()">
+          <a href="#" role="button" [attr.aria-expanded]="isSubmenuOpen ? 'true' : 'false'">Store Items</a>
+          <ul class="submenu" *ngIf="isSubmenuOpen" @submenuAnimation>
+            <li><a href="#" (click)="setActiveMenuItem('Data entry with manager')">Data entry with manager</a></li>
+            <li><a href="#" (click)="setActiveMenuItem('Data entry by user')">Data entry by user</a></li>
+            <li><a href="#" (click)="setActiveMenuItem('Data delete by user')">Data delete by user</a></li>
+            <li><a href="#" (click)="setActiveMenuItem('Data delete by manager')">Data delete by manager</a></li>
+            <li><a href="#" (click)="setActiveMenuItem('Update Data')">Update Data</a></li>
+            <li><a href="#" (click)="setActiveMenuItem('Edit Data')">Edit Data</a></li>
+          </ul>
+        </li>
+        <li class="menu-item" [ngClass]="{'active': activeMenuItem === 'Admin'}">
+          <a href="#" (click)="setActiveMenuItem('Admin')">Admin</a>
+        </li>
+        <li class="menu-item" [ngClass]="{'active': activeMenuItem === 'Contact'}">
+          <a href="#" (click)="setActiveMenuItem('Contact')">Contact</a>
+        </li>
+      </ul>
+      <div class="controls-container">
+        <div class="search-container">
+          <input type="text" class="search-box" placeholder="Search..." aria-label="Search box for finding content on the site" />
+          <button class="search-button" aria-label="Submit search query"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="buttons-container">
+          <button class="control-button" (click)="toggleConfigPopover()" aria-label="Configure settings" aria-haspopup="true" [attr.aria-expanded]="isConfigPopoverOpen ? 'true' : 'false'" tabindex="0">
+            <i class="fas fa-tools"></i>
+          </button>
+          <div class="config-popover" [class.show]="isConfigPopoverOpen" role="menu">
+            <div class="popover-content">
+              <label><input type="checkbox" /> Add User Config</label>
+              <hr />
+              <label><input type="checkbox" /> Add Admin Config</label>
+            </div>
+          </div>
+          <button class="control-button" (click)="toggleSettingsPopover()" aria-label="Settings" aria-haspopup="true" [attr.aria-expanded]="isSettingsPopoverOpen ? 'true' : 'false'" tabindex="0">
+            <i class="fas fa-cog"></i>
+          </button>
+          <div class="settings-popover" [class.show]="isSettingsPopoverOpen" role="menu">
+            <div class="popover-content">
+              <label *ngIf="!isAdminSettingsChecked">
+                <input type="checkbox" /> Add User Settings
+              </label>
+              <hr *ngIf="!isAdminSettingsChecked" />
+              <label>
+                <input type="checkbox" (change)="toggleAdminSettings()" /> Add Admin Settings
+              </label>
+            </div>
+          </div>
+          <button class="control-button" aria-label="Help" tabindex="0"><i class="fas fa-question-circle"></i></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  

@@ -1,0 +1,60 @@
+<header class="main-header">
+    <!-- Left Header -->
+    <div class="left-header">
+      <div class="logo-container">
+        <img src="../../../../assets/logo.png" alt="Logo 1" class="logo1">
+        <img src="../../../../assets/logo2.png" alt="Logo 2" class="logo2">
+        <img src="../../../../assets/logo3.png" alt="Logo 3" class="logo3">
+        <img src="../../../../assets/logo4.png" alt="Logo 4" class="logo4">
+      </div>
+      <div class="logo-separator"></div>
+      <div class="title-container">
+        Admin Panel
+      </div>
+    </div>
+  
+    <!-- Right Header -->
+    <div class="right-header">
+      <div *ngIf="!isMobileOrTabletView" class="language-container">
+        <select [(ngModel)]="selectedLanguage" (change)="onLanguageChange()">
+          <option value="EN">EN</option>
+          <option value="DE">DE</option>
+        </select>
+      </div>
+      <div *ngIf="!isMobileOrTabletView" class="profile-container">
+        <button class="btn-profile">
+          <i class="fas fa-user"></i>
+        </button>
+      </div>
+      <div *ngIf="!isMobileOrTabletView" class="logout-container">
+        <button class="btn-logout">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+      <div class="hamburger-container">
+        <button class="hamburger-button" (click)="toggleDropdown()">
+          <i class="fas" [ngClass]="hamburgerIconClass"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Second Header -->
+  <div class="second-header" *ngIf="isSecondHeaderVisible">
+    <div class="second-header-language-container">
+      <select [(ngModel)]="selectedLanguage" (change)="onLanguageChange()">
+        <option value="EN">EN</option>
+        <option value="DE">DE</option>
+      </select>
+    </div>
+    <div class="second-header-profile-container">
+      <button class="second-header-btn-profile">
+        <i class="fas fa-user"></i>
+      </button>
+    </div>
+    <div class="second-header-logout-container">
+      <button class="second-header-btn-logout">
+        <i class="fas fa-sign-out-alt"></i>
+      </button>
+    </div>
+  </div>

@@ -1,0 +1,316 @@
+#navbar {
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffffff;
+  
+      .menu {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+  
+        .menu-item {
+          position: relative;
+  
+          a {
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            color: #333;
+            font-weight: bold;
+            font-size: 16px;
+            box-sizing: border-box;
+            position: relative;
+          }
+  
+          &.has-submenu > a::after {
+            content: '\25BC';
+            font-size: 12px;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+  
+          &:hover a {
+            background-color: #e0e0e0;
+          }
+  
+          @media (min-width: 1025px) {
+            &.active a {
+              border-bottom: 3px solid #333;
+            }
+          }
+  
+          .submenu {
+            overflow: hidden;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: fixed;
+            z-index: 1000;
+  
+            li {
+              a {
+                padding: 10px 20px;
+                display: block;
+                color: #333;
+                text-decoration: none;
+                font-size: 14px;
+                position: relative;
+              }
+  
+              &:hover a {
+                background-color: #e0e0e0;
+              }
+  
+              &:not(:last-child) {
+                border-bottom: 1px solid #ccc;
+              }
+            }
+          }
+        }
+      }
+  
+      .controls-container {
+        display: flex;
+        align-items: center;
+  
+        .search-container {
+          display: flex;
+          align-items: center;
+          margin-right: 10px;
+  
+          .search-box {
+            padding: 5px 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+          }
+  
+          .search-button {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #007bff;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+  
+            i {
+              font-size: 18px;
+            }
+          }
+  
+          .search-button:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+          }
+        }
+  
+        .buttons-container {
+          position: relative;
+          display: flex;
+          align-items: center;
+  
+          .control-button {
+            margin-left: 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: 1px solid #28a745;
+            border-radius: 4px;
+            cursor: pointer;
+  
+            i {
+              font-size: 18px;
+            }
+          }
+  
+          .control-button:hover {
+            background-color: #218838;
+            border-color: #218838;
+          }
+  
+          .settings-popover, .config-popover {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 200px;
+            z-index: 1000;
+            padding: 10px;
+  
+            &.show {
+              display: block;
+            }
+  
+            .popover-content {
+              display: flex;
+              flex-direction: column;
+  
+              label {
+                margin-bottom: 10px;
+                font-size: 14px;
+  
+                input {
+                  margin-right: 5px;
+                }
+              }
+  
+              hr {
+                border: 0;
+                border-top: 1px solid #eee;
+                margin: 10px 0;
+              }
+            }
+          }
+  
+          .config-popover {
+            top: 40px;
+            right: 60px;
+          }
+        }
+      }
+    }
+  
+    @media (max-width: 767px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+  
+        .menu {
+          flex-direction: column;
+          width: 100%;
+  
+          .menu-item {
+            a {
+              width: 100%;
+            }
+  
+            &:not(:last-child) {
+              border-bottom: 1px solid #333;
+            }
+  
+            .submenu {
+              position: static;
+            }
+          }
+        }
+  
+        .controls-container {
+          width: 100%;
+          justify-content: flex-end;
+          flex-direction: row;
+  
+          .search-container {
+            display: flex;
+            align-items: center;
+  
+            .search-box {
+              width: auto;
+              border-radius: 4px 0 0 4px;
+            }
+  
+            .search-button {
+              width: auto;
+              border-radius: 0 4px 4px 0;
+            }
+          }
+  
+          .buttons-container {
+            display: flex;
+            align-items: center;
+  
+            .control-button {
+              margin-left: 5px;
+              margin-right: 0;
+              padding: 5px;
+              flex: 0;
+              width: 40px;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+  
+        .menu {
+          flex-direction: column;
+          width: 100%;
+  
+          .menu-item {
+            a {
+              width: 100%;
+            }
+  
+            &:not(:last-child) {
+              border-bottom: 1px solid #333;
+            }
+  
+            .submenu {
+              position: static;
+            }
+          }
+        }
+  
+        .controls-container {
+          width: 100%;
+          justify-content: flex-end;
+          flex-direction: row;
+  
+          .search-container {
+            display: flex;
+            align-items: center;
+  
+            .search-box {
+              width: auto;
+              border-radius: 4px 0 0 4px;
+            }
+  
+            .search-button {
+              width: auto;
+              border-radius: 0 4px 4px 0;
+            }
+          }
+  
+          .buttons-container {
+            display: flex;
+            align-items: center;
+  
+            .control-button {
+              margin-left: 5px;
+              margin-right: 0;
+              padding: 5px;
+              flex: 0;
+              width: 40px;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+  
